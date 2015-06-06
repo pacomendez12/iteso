@@ -77,9 +77,10 @@ class tokenLexPair {
 	/* Valid lexemas: */
 	public static final int INVALID = 0;
 	public static final int VARIABLE = 1;
-	public static final int CONNECTOR = 2;
-	public static final int FIRST_PARENTHESES = 3;
-	public static final int SECOND_PARENTHESES = 4;
+	public static final int UNARY_CONNECTOR = 2;
+	public static final int BINARY_CONNECTOR = 3;
+	public static final int FIRST_PARENTHESES = 4;
+	public static final int SECOND_PARENTHESES = 5;
 	
 	
 	
@@ -98,8 +99,10 @@ class tokenLexPair {
 	
 	public static int wichLexIs(String token) {
 		switch(token) {
-		case "~": case "&": case "|": case "->": case "<->": 
-			return CONNECTOR;
+		case "~": 
+			return UNARY_CONNECTOR;
+		case "&": case "|": case "->": case "<->": 
+			return BINARY_CONNECTOR;
 		case "(":
 			return FIRST_PARENTHESES;
 		case ")":
